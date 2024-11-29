@@ -1,28 +1,26 @@
 import React, { useState } from 'react';
 import { Modal, Button } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate instead of useHistory
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const [showModal, setShowModal] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate(); // Create navigate object for navigation
+  const navigate = useNavigate();
 
-  // Function to toggle the modal visibility
+  
   const handleShow = () => setShowModal(true);
   const handleClose = () => setShowModal(false);
 
-  // Function to handle form submission and redirect
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add login validation here (check username, password)
+  
     
-    // If login is successful, store login status (e.g., in localStorage)
+  
     localStorage.setItem('isLoggedIn', true);
 
-    // Navigate to the home page after successful login
-    navigate('/'); // Use navigate to go to the home page
-    handleClose(); // Close the modal after submission
+    navigate('/'); 
+    handleClose(); 
   };
 
   return (
@@ -55,13 +53,13 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* Modal Component */}
+      
       <Modal show={showModal} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Sign Up</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {/* Add your login form here */}
+        
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
               <label htmlFor="username" className="form-label">Username</label>
